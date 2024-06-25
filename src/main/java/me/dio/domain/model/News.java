@@ -1,25 +1,23 @@
 package me.dio.domain.model;
 
-public class News {
 
-    private String iconNews;
-    private String descriptionNews;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    public String descriptionNews() {
-        return descriptionNews;
+@Entity(name="tb_news")
+public class News extends AbstractResource{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public News setDescriptionNews(String descriptionNews) {
-        this.descriptionNews = descriptionNews;
-        return this;
-    }
-
-    public String iconNews() {
-        return iconNews;
-    }
-
-    public News setIconNews(String iconNews) {
-        this.iconNews = iconNews;
-        return this;
+    public Long getId() {
+        return this.id;
     }
 }

@@ -1,25 +1,22 @@
 package me.dio.domain.model;
 
-public class Feature {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    private String iconFeature;
-    private String descriptionFeature;
+@Entity(name="tb_feature")
+public class Feature extends AbstractResource{
 
-    public String descriptionFeature() {
-        return descriptionFeature;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Feature setDescriptionFeature(String descriptionFeature) {
-        this.descriptionFeature = descriptionFeature;
-        return this;
-    }
-
-    public String iconFeature() {
-        return iconFeature;
-    }
-
-    public Feature setIconFeature(String iconFeature) {
-        this.iconFeature = iconFeature;
-        return this;
+    public Long getId() {
+        return this.id;
     }
 }

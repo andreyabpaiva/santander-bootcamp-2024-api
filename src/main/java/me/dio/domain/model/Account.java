@@ -1,11 +1,25 @@
 package me.dio.domain.model;
 
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
+
+@Entity(name="tb_account")
 public class Account {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique=true)
     private String number;
+    @Column(unique=true)
     private String agency;
+
+    @Column(nullable = false, precision = 13, scale = 2)
     private String balance;
-    private String limit;
+    @Column(name="addicional_limit", precision = 13, scale = 2)
+    private BigDecimal limit;
 
     public String agency() {
         return agency;
@@ -25,11 +39,11 @@ public class Account {
         return this;
     }
 
-    public String limit() {
+    public BigDecimal limit() {
         return limit;
     }
 
-    public Account setLimit(String limit) {
+    public Account setLimit(BigDecimal limit) {
         this.limit = limit;
         return this;
     }
@@ -40,6 +54,15 @@ public class Account {
 
     public Account setNumber(String number) {
         this.number = number;
+        return this;
+    }
+
+    public Long id() {
+        return id;
+    }
+
+    public Account setId(Long id) {
+        this.id = id;
         return this;
     }
 }

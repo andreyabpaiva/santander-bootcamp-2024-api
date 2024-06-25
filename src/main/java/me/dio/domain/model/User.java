@@ -1,13 +1,24 @@
 package me.dio.domain.model;
 
+import jakarta.persistence.*;
 import java.util.List;
 
+@Entity(name="tb_user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
     private String name;
+
+    @OneToOne(cascade=CascadeType.ALL)
     private Account account;
-    private List<Feature> feature;
+    @OneToOne(cascade=CascadeType.ALL)
     private Card card;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    private List<Feature> feature;
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private List<News> news;
 
     public Account account() {
@@ -52,6 +63,15 @@ public class User {
 
     public User setNews(List<News> news) {
         this.news = news;
+        return this;
+    }
+
+    public Long id() {
+        return id;
+    }
+
+    public User setId(Long id) {
+        this.id = id;
         return this;
     }
 }
