@@ -41,4 +41,4 @@ Projeto desenvolvido no Santander Dev Week 2023.
 
 ```
 
-(Referência)[https://github.com/digitalinnovationone/santander-dev-week-2023-api]
+[Referência](https://github.com/digitalinnovationone/santander-dev-week-2023-api)
